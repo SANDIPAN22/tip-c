@@ -1,0 +1,60 @@
+{{> header}}
+  <body>
+    {{#if fresh}}
+    <form action="/ingred">
+  <div class="form-row align-items-center">
+   
+    <div class="col-auto">
+   
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Enter any ingredient name to know more about it :</div>
+        </div>
+        <input type="text" class="form-control"name="ing" id="inlineFormInputGroup" placeholder="Enter the name of the ingredient. eg: whiskey, gin" required>
+      </div>
+      <div >
+ 
+        <button type="submit">Search</button>
+      </div>
+    </div>
+   
+  
+  </div>
+</form>
+    {{else}}
+   
+    {{#if error}}
+    ......Sorry NO such record found......!!
+    {{else}}
+    
+   
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+     
+          <div class="col">
+    <div class="card h-100">
+   
+      <div class="card-body">
+        <h2 class="card-title">{{response.strIngredient}}</h2>
+        <p class="card-text"><b>ALCOHOL: </b>{{response.strAlcohol}}</p>
+        <p class="card-text"><b>TYPE: </b>{{response.strType}}</p>
+ 
+        <h3>EXPERT'S DESCRIPTION</h3>
+        <div style="
+  height: 200px;
+  background-color: rgb(241, 189, 171);
+  overflow: scroll;"> {{response.strDescription}}</div>
+       
+
+      </div>
+
+    </div>
+  </div>
+
+      
+ 
+      </div>
+    {{/if}}
+    {{/if}}
+
+  </body>
+{{> footer}}

@@ -1,0 +1,59 @@
+{{> header}}
+  <body>
+    {{#if fresh}}
+    <form action="/">
+  <div class="form-row align-items-center">
+   
+    <div class="col-auto">
+   
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Cocktail Name:</div>
+        </div>
+        <input type="text" class="form-control"name="cock" id="inlineFormInputGroup" placeholder="Enter the whole or partial name of the cocktail" required>
+      </div>
+      <div >
+ 
+        <button type="submit">Search</button>
+      </div>
+    </div>
+   
+  
+  </div>
+</form>
+    {{/if}}
+    {{#unless error}}
+   
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+      {{#each response}}
+          <div class="col">
+    <div class="card h-100">
+      <img src="{{this.strDrinkThumb}}" style="height: 40%; width: 40%" class="card-img-top" alt="cocktail image" >
+      <div class="card-body">
+        <h2 class="card-title">{{this.strDrink}}</h2>
+        <p class="card-text"><b>TAGS: </b>{{this.strTags}}</p>
+        <p class="card-text"><b>CATEGORY: </b>{{this.strCategory}}</p>
+        <p class="card-text"><b>ALCOHOLIC: </b>{{this.strAlcoholic}}</p>
+        <p class="card-text"><b>GLASS: </b>{{this.strGlass}}</p>
+        <h3>EXPERT'S TIP</h3>
+        <p class="card-text">{{this.strInstructions}}</p>
+
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated: {{this.dateModified}}</small>
+         <small class="text-muted"> || Creative Commons Confirmed: {{this.strCreativeCommonsConfirmed}}</small>
+      </div>
+    </div>
+  </div>
+
+      
+      {{/each}}
+      </div>
+
+    {{/unless}}
+    {{#if error}}
+    ......Sorry NO such record found......!!
+    {{/if}}
+
+  </body>
+{{> footer}}
