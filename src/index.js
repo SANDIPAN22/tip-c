@@ -4,7 +4,7 @@ const hbs = require("hbs")
 const utils = require ("./utils")
 
 const app = express()
-
+const port = process.env.PORT || 5000
 
 // dynamic templating engine set (handlebar)
 const viewsPath = path.join(__dirname, "../templates/views")
@@ -155,7 +155,7 @@ app.get("/shorthand",(req,res)=>{
 })
 
 
-app.listen(5000, ()=> console.log("ok I am listening on port 5000"))
+app.listen(port, ()=> console.log("ok I am listening on port "+port))
 
 
 
